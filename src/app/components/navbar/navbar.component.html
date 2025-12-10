@@ -1,0 +1,59 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="nav-brand">
+      <a routerLink="/" class="logo">
+        <span class="logo-icon">📚</span>
+        <span class="logo-text">BookVerse</span>
+      </a>
+    </div>
+
+    <div class="nav-links">
+      <a routerLink="/" 
+         routerLinkActive="active" 
+         [routerLinkActiveOptions]="{exact: true}"
+         class="nav-link">
+        <span class="nav-icon">🏠</span> Home
+      </a>
+      
+      <a routerLink="/about" 
+         routerLinkActive="active" 
+         class="nav-link">
+        <span class="nav-icon">ℹ️</span> About
+      </a>
+      
+      <a routerLink="/contact" 
+         routerLinkActive="active" 
+         class="nav-link">
+        <span class="nav-icon">📞</span> Contact
+      </a>
+      
+      @if (authService.isAuthenticated()) {
+        <a routerLink="/cart" 
+           routerLinkActive="active" 
+           class="nav-link">
+          <span class="nav-icon">🛒</span> Cart
+          @if (cartItemCount > 0) {
+            <span class="cart-count">{{ cartItemCount }}</span>
+          }
+        </a>
+        
+        <div class="user-section">
+          <span class="user-greeting">Hi, {{ getUserName() }}</span>
+          <button class="btn btn-outline btn-small" (click)="logout()">
+            <span class="logout-icon">🚪</span> Logout
+          </button>
+        </div>
+      } @else {
+        <a routerLink="/login" 
+           routerLinkActive="active" 
+           class="nav-link">
+          <span class="nav-icon">🔑</span> Login
+        </a>
+        
+        <button class="btn btn-primary btn-small" routerLink="/signup">
+          <span class="register-icon">📝</span> Sign Up
+        </button>
+      }
+    </div>
+  </div>
+</nav>

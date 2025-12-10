@@ -1,0 +1,77 @@
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Our Bookstore</h1>
+    <p>Discover thousands of books across all genres</p>
+    <div class="search-box">
+      <!-- Search input -->
+      <input 
+        type="text" 
+        [(ngModel)]="searchTerm" 
+        (input)="searchBooks()"
+        placeholder="Search for books..."
+        class="search-input"
+      />
+
+      <!-- Genre dropdown with dynamic genres -->
+      <select 
+        [(ngModel)]="selectedGenre" 
+        (change)="filterByGenre()"
+        class="genre-select"
+      >
+        <option value="">All Genres</option>
+        <option *ngFor="let genre of availableGenres" [value]="genre">
+          {{ genre }}
+        </option>
+      </select>
+    </div>
+  </div>
+</section>
+
+<section class="books-section">
+  <div class="section-header">
+    <h2>Featured Books</h2>
+    <p>Explore our collection</p>
+  </div>
+
+  <!-- Loading -->
+  <div *ngIf="isLoading" class="loading">Loading books...</div>
+
+  <!-- No results -->
+  <div *ngIf="!isLoading && filteredBooks.length === 0" class="no-results">
+    No books found. Try a different search.
+  </div>
+
+  <!-- Books grid -->
+  <div *ngIf="!isLoading && filteredBooks.length > 0" class="books-grid">
+    <div *ngFor="let book of filteredBooks; trackBy: trackByBook" class="book-card">
+      <div class="book-image">
+        <img [src]="book.coverImage" [alt]="book.title" />
+      </div>
+      <div class="book-info">
+        <h3>{{ book.title }}</h3>
+        <p class="book-author">by {{ book.author }}</p>
+        <p class="book-genre">{{ book.genre }}</p>
+        <p class="book-price">${{ book.price }}</p>
+        <p class="book-description">{{ book.description | slice:0:100 }}...</p>
+        <div class="book-actions">
+          <button class="btn btn-primary" (click)="addToCart(book)">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <div class="feature">
+    <h3>📚 Wide Selection</h3>
+    <p>Thousands of books across all genres</p>
+  </div>
+  <div class="feature">
+    <h3>🚚 Free Shipping</h3>
+    <p>Free delivery on orders over $25</p>
+  </div>
+  <div class="feature">
+    <h3>⭐ Customer Reviews</h3>
+    <p>Read reviews from other book lovers</p>
+  </div>
+</section>

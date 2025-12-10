@@ -1,0 +1,120 @@
+<div class="cart-container">
+  <div class="cart-header">
+    <h1>Shopping Cart</h1>
+    <p *ngIf="cartItems.length === 0">Your cart is empty</p>
+  </div>
+
+  <div *ngIf="cartItems.length > 0" class="cart-content">
+    <div class="cart-items-section">
+      <!-- Cart table header and items remain the same -->
+      <div class="cart-table-header">
+        <div class="header-item">Product</div>
+        <div class="header-item">Price</div>
+        <div class="header-item">Quantity</div>
+        <div class="header-item">Total</div>
+        <div class="header-item">Actions</div>
+      </div>
+
+      <div *ngFor="let item of cartItems" class="cart-item">
+        <div class="item-product">
+          <img [src]="item.book.coverImage" [alt]="item.book.title" class="product-image">
+          <div class="product-info">
+            <h3>{{ item.book.title }}</h3>
+            <p class="author">by {{ item.book.author }}</p>
+            <p class="genre">{{ item.book.genre }}</p>
+          </div>
+        </div>
+        
+        <div class="item-price">
+          ${{ item.book.price.toFixed(2) }}
+        </div>
+        
+        <div class="item-quantity">
+          <div class="quantity-controls">
+            <button class="quantity-btn" (click)="decreaseQuantity(item)">-</button>
+            <input 
+              type="number" 
+              [value]="item.quantity" 
+              min="1"
+              (change)="updateQuantity(item.book.id, $event)"
+              class="quantity-input"
+            >
+            <button class="quantity-btn" (click)="increaseQuantity(item)">+</button>
+          </div>
+        </div>
+        
+        <div class="item-total">
+          ${{ (item.book.price * item.quantity).toFixed(2) }}
+        </div>
+        
+        <div class="item-actions">
+          <button class="btn btn-danger" (click)="removeItem(item.book.id)">
+            Remove
+          </button>
+        </div>
+      </div>
+
+      <div class="cart-actions">
+        <button class="btn btn-outline" (click)="clearCart()">
+          Clear Cart
+        </button>
+        <a routerLink="/browse" class="btn btn-outline">
+          Continue Shopping
+        </a>
+      </div>
+    </div>
+
+    <div class="cart-summary">
+      <h2>Order Summary</h2>
+      
+      <div class="summary-row">
+        <span>Items ({{ totalItems }})</span>
+        <span>${{ totalPrice.toFixed(2) }}</span>
+      </div>
+      
+      <div class="summary-row">
+        <span>Shipping</span>
+        <span>Free</span>
+      </div>
+      
+      <div class="summary-row">
+        <span>Tax (8%)</span>
+        <span>${{ calculateTax().toFixed(2) }}</span>
+      </div>
+      
+      <div class="summary-divider"></div>
+      
+      <div class="summary-row total">
+        <span>Total</span>
+        <span>${{ calculateFinalTotal().toFixed(2) }}</span>
+      </div>
+      
+      <button 
+        class="btn btn-primary checkout-btn" 
+        (click)="checkout()"
+        [disabled]="isProcessingCheckout || cartItems.length === 0"
+      >
+        <span *ngIf="isProcessingCheckout" class="loading-spinner"></span>
+        {{ isProcessingCheckout ? 'Processing...' : 'Proceed to Checkout' }}
+      </button>
+      
+      <div class="payment-methods">
+        <p>We accept:</p>
+        <div class="payment-icons">
+          <span>💳</span>
+          <span>📱</span>
+          <span>💰</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="cartItems.length === 0" class="empty-cart">
+    <div class="empty-cart-icon">🛒</div>
+    <h2>Your cart is empty</h2>
+    <p>Looks like you haven't added any books to your cart yet.</p>
+    <a routerLink="/browse" class="btn btn-primary">
+      Browse Books
+    </a>
+  </div>
+</div>

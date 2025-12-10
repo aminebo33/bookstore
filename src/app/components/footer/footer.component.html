@@ -1,0 +1,144 @@
+<footer class="footer">
+  <div class="footer-container">
+    <!-- Main Footer Content -->
+    <div class="footer-content">
+      <!-- Brand Section -->
+      <div class="footer-section brand-section">
+        <div class="footer-logo">
+          <span class="footer-logo-icon">📚</span>
+          <span class="footer-logo-text">BookVerse</span>
+        </div>
+        <p class="footer-tagline">
+          Your ultimate destination for discovering and enjoying books from around the world. 
+          We're passionate about connecting readers with their next favorite story.
+        </p>
+      </div>
+
+      <!-- Quick Links -->
+      <div class="footer-section links-section">
+        <h4 class="footer-heading">Quick Links</h4>
+        <ul class="footer-links">
+          <li>
+            <a href="/" class="footer-link">
+              <span class="link-icon">🏠</span> Home
+            </a>
+          </li>
+          <li>
+            <a href="/about" class="footer-link">
+              <span class="link-icon">ℹ️</span> About Us
+            </a>
+          </li>
+          <li>
+            <a href="/contact" class="footer-link">
+              <span class="link-icon">📞</span> Contact
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Help & Support -->
+      <div class="footer-section help-section">
+        <h4 class="footer-heading">Help & Support</h4>
+        <ul class="footer-links">
+          <li>
+            <a href="#" class="footer-link">
+              <span class="link-icon">📦</span> Shipping Info
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-link">
+              <span class="link-icon">↩️</span> Returns & Exchanges
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-link">
+              <span class="link-icon">❓</span> FAQ
+            </a>
+          </li>
+          <li>
+            <a href="#" class="footer-link">
+              <span class="link-icon">📝</span> Privacy Policy
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="footer-section contact-section">
+        <h4 class="footer-heading">Contact Us</h4>
+        <div class="contact-info">
+          <div class="contact-item">
+            <span class="contact-icon">📧</span>
+            <div class="contact-details">
+              <div class="contact-label">Email</div>
+              <a href="mailto:info@bookverse.com" class="contact-link">aminebouali333@gmail.com</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📞</span>
+            <div class="contact-details">
+              <div class="contact-label">Phone</div>
+              <a href="tel:+11234567890" class="contact-link">+216 25-077-188</a>
+            </div>
+          </div>
+          <div class="contact-item">
+            <span class="contact-icon">📍</span>
+            <div class="contact-details">
+              <div class="contact-label">Address</div>
+              <address class="contact-address">
+                Bohsina, Sousse
+              </address>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Newsletter -->
+    <div class="newsletter-section">
+      <div class="newsletter-content">
+        <div class="newsletter-text">
+          <h4 class="newsletter-heading">Stay Updated</h4>
+          <p>Subscribe to our newsletter for new releases, exclusive offers, and reading tips.</p>
+        </div>
+        <form class="newsletter-form" (submit)="onNewsletterSubmit($event)">
+          <div class="newsletter-input-group">
+            <input 
+              type="email" 
+              placeholder="Enter your email address"
+              class="newsletter-input"
+              required
+            >
+            <button type="submit" class="newsletter-btn">
+              <span class="btn-icon">✉️</span> Subscribe
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="footer-bottom-content">
+        <div class="copyright">
+          &copy; {{ currentYear }} BookVerse. All rights reserved.
+        </div>
+        
+        <div class="payment-methods">
+          <span class="payment-icon">💳</span>
+          <span class="payment-icon">📱</span>
+          <span class="payment-icon">💰</span>
+          <span class="payment-icon">🔒</span>
+        </div>
+        
+        <div class="legal-links">
+          <a href="#" class="legal-link">Privacy Policy</a>
+          <span class="divider">•</span>
+          <a href="#" class="legal-link">Terms of Service</a>
+          <span class="divider">•</span>
+          <a href="#" class="legal-link">Cookie Policy</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
