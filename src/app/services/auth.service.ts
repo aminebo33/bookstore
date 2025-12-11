@@ -14,7 +14,7 @@ export class AuthService {
   currentUser$ = this.currentUserSubject.asObservable();
 
   constructor(private router: Router) {
-    // Check localStorage for existing authentication
+
     const token = localStorage.getItem('auth_token');
     const user = localStorage.getItem('current_user');
     
@@ -25,16 +25,15 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<boolean> {
-    // Mock authentication - in real app, this would call an API
-    if (email === 'user@example.com' && password === 'password') {
+
+    if (email === 'amine@gmail.com' && password === '123') {
       const mockUser = {
         id: '1',
         email: email,
-        name: 'John Doe',
+        name: 'Amine  Bouali',
         role: 'user'
       };
 
-      // Simulate API delay
       return of(true).pipe(
         delay(1000),
         tap(() => {
@@ -49,8 +48,8 @@ export class AuthService {
     return of(false).pipe(delay(1000));
   }
 
-  signup(name: string, email: string, password: string): Observable<boolean> {
-  // Mock signup - in real app, this would call an API
+  signup(name: string, email: string): Observable<boolean> {
+
   const mockUser = {
     id: 'new_' + Date.now(),
     email: email,

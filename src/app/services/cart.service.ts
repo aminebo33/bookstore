@@ -15,7 +15,6 @@ export class CartService {
   cartItems$ = this.cartItemsSubject.asObservable();
 
   constructor() {
-    // Load cart from localStorage
     const savedCart = localStorage.getItem('bookstore_cart');
     if (savedCart) {
       this.cartItemsSubject.next(JSON.parse(savedCart));

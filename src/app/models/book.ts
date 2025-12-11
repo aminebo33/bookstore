@@ -1,11 +1,9 @@
-// Response from Google Books API
 export interface GoogleBooksApiResponse {
   kind: string;
   totalItems: number;
   items: VolumeItem[];
 }
 
-// Represents a single book volume
 export interface VolumeItem {
   kind: string;
   id: string;
@@ -16,7 +14,6 @@ export interface VolumeItem {
   accessInfo?: AccessInfo;
 }
 
-// Core book information from Google Books
 export interface VolumeInfo {
   title: string;
   subtitle?: string;
@@ -36,25 +33,23 @@ export interface VolumeInfo {
   canonicalVolumeLink?: string;
 }
 
-// Simplified Book model for your application
 export interface Book {
   id: string;
   title: string;
-  author: string; // Derived from authors[]
+  author: string;
   description: string;
-  price: number; // Derived from saleInfo
-  genre: string; // Derived from categories[]
+  price: number;
+  genre: string;
   publicationDate: string;
-  isbn: string; // Derived from industryIdentifiers
-  coverImage: string; // Derived from imageLinks
+  isbn: string;
+  coverImage: string;
   rating: number;
   pages: number;
   publisher: string;
 }
 
-// Supporting interfaces for Google Books API
 export interface IndustryIdentifier {
-  type: string; // e.g., "ISBN_13", "ISBN_10"
+  type: string;
   identifier: string;
 }
 
@@ -98,7 +93,6 @@ export interface AccessInfo {
   accessViewStatus: string;
 }
 
-// For authentication
 export interface User {
   id: string;
   email: string;

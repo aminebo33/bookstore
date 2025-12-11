@@ -27,12 +27,10 @@ export class ContactComponent {
     this.isSubmitting = true;
     this.errorMessage = '';
 
-    // Simulate form submission
     setTimeout(() => {
       this.isSubmitting = false;
       this.showSuccess = true;
-      
-      // Reset form after 3 seconds
+
       setTimeout(() => {
         this.resetForm();
         this.showSuccess = false;

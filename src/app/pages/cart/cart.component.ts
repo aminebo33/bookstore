@@ -74,35 +74,28 @@ export class CartComponent implements OnInit {
 
     this.isProcessingCheckout = true;
 
-    // Simulate payment processing delay
     setTimeout(() => {
-      // Show success message
       const successMessage = `✅ Order Successful!\n\nOrder Summary:\nItems: ${this.totalItems}\nTotal: $${(this.totalPrice * 1.08).toFixed(2)}\n\nThank you for your purchase!`;
       alert(successMessage);
-      
-      // Clear the cart
+
       this.cartService.clearCart();
-      
-      // Reset local state
+
       this.cartItems = [];
       this.totalPrice = 0;
       this.totalItems = 0;
       this.isProcessingCheckout = false;
-      
-      // Redirect to home page after 1 second
+
       setTimeout(() => {
         this.router.navigate(['/']);
       }, 1000);
       
-    }, 1500); // Simulate 1.5 second payment processing
+    }, 1500);
   }
 
-  // Optional: Add method to calculate tax
   calculateTax(): number {
     return this.totalPrice * 0.08;
   }
 
-  // Optional: Add method to calculate final total
   calculateFinalTotal(): number {
     return this.totalPrice + this.calculateTax();
   }

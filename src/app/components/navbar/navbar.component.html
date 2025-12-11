@@ -1,5 +1,8 @@
 <nav class="navbar">
+  <!-- Main navigation container -->
   <div class="navbar-container">
+    
+    <!-- Brand/Logo section -->
     <div class="nav-brand">
       <a routerLink="/" class="logo">
         <span class="logo-icon">📚</span>
@@ -7,6 +10,7 @@
       </a>
     </div>
 
+    <!-- Navigation links section -->
     <div class="nav-links">
       <a routerLink="/" 
          routerLinkActive="active" 
@@ -26,7 +30,7 @@
          class="nav-link">
         <span class="nav-icon">📞</span> Contact
       </a>
-      
+
       @if (authService.isAuthenticated()) {
         <a routerLink="/cart" 
            routerLinkActive="active" 
@@ -36,7 +40,7 @@
             <span class="cart-count">{{ cartItemCount }}</span>
           }
         </a>
-        
+
         <div class="user-section">
           <span class="user-greeting">Hi, {{ getUserName() }}</span>
           <button class="btn btn-outline btn-small" (click)="logout()">
